@@ -10,8 +10,9 @@ router = APIRouter(prefix="/api/product-ai")
 async def root(): return {"/api/product": test_env()}
 
 @router.post('/info')
-async def get_product_info(product: ProductInfo):
-    res = image_to_text(product['imgUrl'])
+async def get_product_info(req:Request):
+    data = await req.json()
+    res = image_to_text(data['imgUrl'])
     return res
 
 @router.post('/info/prompt-tuning')
