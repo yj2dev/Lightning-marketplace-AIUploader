@@ -1,0 +1,13 @@
+# node_modules
+node_modules
+
+# Environment
+.env
+
+# workspace.xml
+workspace.xml
+
+# aws pem
+lightning-market.pem
+# Local Netlify folder
+.netlify
