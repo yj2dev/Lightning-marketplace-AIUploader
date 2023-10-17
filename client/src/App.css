@@ -1,0 +1,78 @@
+/*전체 글꼴*/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap");
+
+/*로고명 글꼴*/
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+/*input[type=password] 모양*/
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+html,
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0px;
+  padding: 0px;
+  user-select: none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  font-family: "Noto Sans KR", sans-serif;
+}
+label {
+  font-family: "Noto Sans KR", sans-serif;
+}
+textarea {
+  font-family: "Noto Sans KR", sans-serif;
+}
+#logo_title {
+  font-family: 'Do Hyeon', sans-serif;
+}
+ol,
+ul {
+   -webkit-padding-start: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+li {
+  list-style: none;
+  font-family: "Noto Sans KR", sans-serif;
+}
+table {
+  border-collapse: collapse;
+}
+button{
+  font-family: "Noto Sans KR", sans-serif;
+}
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+button:focus {
+  outline: none;
+}
+button:active {
+  outline: none;
+}
+input:focus {
+  outline: none;
+}
+textarea:focus {
+  outline: none;
+}
+.cursor_pointer:hover {
+  cursor:pointer;
+}
+.cursor_none:hover {
+  cursor: none;
+}
+.hidden {
+  display: none
+}
