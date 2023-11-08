@@ -13,6 +13,10 @@ import * as qs from 'qs';
 import * as cache from 'memory-cache';
 import { NaverAuthGuard } from '../auth/guard/naver-auth.guard';
 import { KakaoAuthGuard } from '../auth/guard/kakao-auth.guard';
+import {ApiTags} from "@nestjs/swagger";
+
+
+@ApiTags('oauth')
 
 @Controller('oauth')
 export class OauthController {

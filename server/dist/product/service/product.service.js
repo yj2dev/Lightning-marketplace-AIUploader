@@ -89,7 +89,7 @@ let ProductService = class ProductService {
             console.log('upload-ai res.data >> ', res.data);
             console.log('product name >> ', res.data.product_name);
             productInfo.title = res.data.title;
-            productInfo.description = res.data.description;
+            productInfo.description = res.data.desc;
             productInfo.largeCateogry = res.data.major_category;
             productInfo.mediumCategory = res.data.middle_category;
             productInfo.smallCategory = res.data.small_category;

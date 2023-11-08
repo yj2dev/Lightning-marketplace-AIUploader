@@ -21,7 +21,8 @@ import { Response } from 'express';
 import { UserService } from '../service/user.service';
 import { HttpExceptionFilter } from '../../common/exception/http-exception.filter';
 import { SuccessInterceptor } from '../../common/interceptor/success.interceptor';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+// @ts-ignore
+import {ApiOperation, ApiResponse, ApiTags} from '@nestjs/swagger';
 import { UserReadonlyDto } from '../dto/user.readonly.dto';
 import { UserRequestDto } from '../dto/user.request.dto';
 import { AuthService } from '../../auth/auth.service';
@@ -39,6 +40,8 @@ console.log('[ user environment ]');
 console.log(process.env.AWS_S3_BUCKET_NAME);
 console.log(process.env.AWS_S3_REGION);
 
+
+@ApiTags('user')
 @Controller('user')
 @UseInterceptors(SuccessInterceptor)
 @UseFilters(HttpExceptionFilter)

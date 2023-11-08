@@ -11,6 +11,9 @@ import {
 import { SmsService } from './sms.service';
 import { SuccessInterceptor } from '../common/interceptor/success.interceptor';
 import { HttpExceptionFilter } from '../common/exception/http-exception.filter';
+import {ApiTags} from "@nestjs/swagger";
+
+@ApiTags('sms')
 
 @Controller('sms')
 @UseInterceptors(SuccessInterceptor)

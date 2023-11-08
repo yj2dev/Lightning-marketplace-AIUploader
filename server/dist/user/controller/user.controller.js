@@ -102,10 +102,6 @@ let UserController = class UserController {
         return await this.userService.isPhoneNumber(phoneNumber);
     }
     async uploadProfileImg(currentUser, file) {
-        console.log('profile ... ');
-        console.log('env33');
-        console.log(process.env.AWS_S3_BUCKET_NAME);
-        console.log(process.env.AWS_S3_REGION);
         return this.userService.uploadImg(currentUser._id, file);
     }
     resetProfileImg(currentUser) {
@@ -352,6 +348,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "envTest", null);
 UserController = __decorate([
+    (0, swagger_1.ApiTags)('user'),
     (0, common_1.Controller)('user'),
     (0, common_1.UseInterceptors)(success_interceptor_1.SuccessInterceptor),
     (0, common_1.UseFilters)(http_exception_filter_1.HttpExceptionFilter),

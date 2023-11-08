@@ -45,10 +45,10 @@ async function bootstrap() {
   });
   const PORT = process.env.PORT || 8000;
   const config = new DocumentBuilder()
-    .setTitle('Lightning Market Clone')
-    .setDescription('Lightning Market Clone API description')
+    .setTitle('Lightning Market Clone With AI')
+    .setDescription('Lightning Market Clone With AI API description')
     .setVersion('1.0')
-    .addTag('default')
+    // .addTag('default')
     .build();
 
   app.useGlobalFilters(new HttpExceptionFilter());

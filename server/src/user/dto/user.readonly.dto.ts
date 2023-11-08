@@ -1,4 +1,4 @@
-import { ApiProperty, PickType } from '@nestjs/swagger';
+import {ApiHideProperty, ApiProperty, PickType} from '@nestjs/swagger';
 import { User } from '../model/user.model';
 
 export class UserReadonlyDto extends PickType(User, ['storeName']) {

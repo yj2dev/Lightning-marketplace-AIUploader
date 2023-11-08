@@ -21,6 +21,7 @@ import { Product } from '../model/product.model';
 import { ProductFavorite } from '../../product-favorite/model/product-favorite.model';
 import * as AWS from 'aws-sdk';
 import * as multerS3 from 'multer-s3';
+import {ApiTags} from "@nestjs/swagger";
 
 // s3 객체 생성후 AWS.config을 수정하면 에러발생
 const s3 = new AWS.S3({
@@ -33,6 +34,7 @@ console.log('[ product environment ]');
 console.log(process.env.AWS_S3_BUCKET_NAME);
 console.log(process.env.AWS_S3_REGION);
 
+@ApiTags('product')
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}

@@ -13,6 +13,10 @@ import { FollowService } from './follow.service';
 import { Follow } from './model/follow.model';
 import { CurrentUser } from '../common/decorators/user.decorator';
 import { JwtAuthGuard } from '../auth/guard/jwt.guard';
+import {ApiTags} from "@nestjs/swagger";
+
+
+@ApiTags('follow')
 
 @Controller('follow')
 @UseInterceptors(SuccessInterceptor)
