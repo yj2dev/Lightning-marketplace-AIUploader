@@ -1,3 +1,19 @@
+## 개발 기간
+- 22.01 ~ 04(3), 23.10(1) 4개월
+## 개발 인원
+- 개인
+## 개발 내용
+- Bard API를 사용해 자동 등록 구현
+- Naver Cloud Platform에서 제공하는 서비스 연동해서 문자 발송
+- 핸드폰 인증번호 Redis에 임시저장
+- Socket.io를 활용한 사용자간 채팅 구현
+- 판매 상품, 사용자 프로필 AWS-S3 연결해 저장
+- 도메인 등록 및 배포
+## 시연 영상
+<a href="https://www.youtube.com/watch?v=NbzM5T-6GHM">번개장터 클론</a>(자동상품등록 기능은 포함되어 있지 않습니다.)
+## 참고사항
+- 프로젝트의 모든 세부 사항을 담은 PPT는 해당 레포지토리에서 다운 후 참고해주세요.
+
 ![슬라이드4](https://github.com/yj2dev/Lightning-marketplace-AIUploader/assets/72322679/1a2a1fe8-57b1-4ccd-92cf-f5028b4856a1)
 ![슬라이드7](https://github.com/yj2dev/Lightning-marketplace-AIUploader/assets/72322679/46155a45-80e8-4b8d-a6f3-eef48b229feb)
 ![슬라이드8](https://github.com/yj2dev/Lightning-marketplace-AIUploader/assets/72322679/a37ff5c0-5ea6-4489-9ed9-c501d660b6b4)
@@ -16,6 +32,3 @@
 ![슬라이드32](https://github.com/yj2dev/Lightning-marketplace-AIUploader/assets/72322679/29e20b11-52d6-468b-b3f6-4dec5b87e750)
 ![슬라이드38](https://github.com/yj2dev/Lightning-marketplace-AIUploader/assets/72322679/2d9444bc-8ee7-4220-9696-46d43a73d1c8)
 ![슬라이드39](https://github.com/yj2dev/Lightning-marketplace-AIUploader/assets/72322679/88bc9a03-cd52-4d3b-912f-7388db416acd)
-
-# 참고사항
-**자세한 사항은 PPT를 참고해주세요.**
