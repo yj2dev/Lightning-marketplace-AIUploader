@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TalkController = void 0;
 const common_1 = require("@nestjs/common");
 const talk_service_1 = require("./talk.service");
+const swagger_1 = require("@nestjs/swagger");
 console.log('[ talk environment ]');
 console.log(process.env.AWS_S3_BUCKET_NAME);
 console.log(process.env.AWS_S3_REGION);
@@ -44,6 +45,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], TalkController.prototype, "getRoomList", null);
 TalkController = __decorate([
+    (0, swagger_1.ApiTags)('talk'),
     (0, common_1.Controller)('talk'),
     __metadata("design:paramtypes", [talk_service_1.TalkService])
 ], TalkController);

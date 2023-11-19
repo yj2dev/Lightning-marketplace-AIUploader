@@ -19,6 +19,7 @@ const http_exception_filter_1 = require("../common/exception/http-exception.filt
 const follow_service_1 = require("./follow.service");
 const user_decorator_1 = require("../common/decorators/user.decorator");
 const jwt_guard_1 = require("../auth/guard/jwt.guard");
+const swagger_1 = require("@nestjs/swagger");
 let FollowController = class FollowController {
     constructor(followService) {
         this.followService = followService;
@@ -58,6 +59,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], FollowController.prototype, "getFollower", null);
 FollowController = __decorate([
+    (0, swagger_1.ApiTags)('follow'),
     (0, common_1.Controller)('follow'),
     (0, common_1.UseInterceptors)(success_interceptor_1.SuccessInterceptor),
     (0, common_1.UseFilters)(http_exception_filter_1.HttpExceptionFilter),

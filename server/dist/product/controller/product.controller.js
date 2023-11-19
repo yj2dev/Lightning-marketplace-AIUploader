@@ -21,6 +21,7 @@ const product_service_1 = require("../service/product.service");
 const user_model_1 = require("../../user/model/user.model");
 const AWS = require("aws-sdk");
 const multerS3 = require("multer-s3");
+const swagger_1 = require("@nestjs/swagger");
 const s3 = new AWS.S3({
     accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY,
@@ -202,6 +203,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "uploadProductAI", null);
 ProductController = __decorate([
+    (0, swagger_1.ApiTags)('product'),
     (0, common_1.Controller)('product'),
     __metadata("design:paramtypes", [product_service_1.ProductService])
 ], ProductController);

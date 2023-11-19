@@ -19,6 +19,7 @@ const qs = require("qs");
 const cache = require("memory-cache");
 const naver_auth_guard_1 = require("../auth/guard/naver-auth.guard");
 const kakao_auth_guard_1 = require("../auth/guard/kakao-auth.guard");
+const swagger_1 = require("@nestjs/swagger");
 let OauthController = class OauthController {
     constructor() {
         this.KAKAO_REST_API_KEY = process.env.KAKAO_AUTH_REST_API_KEY;
@@ -184,6 +185,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], OauthController.prototype, "deleteCache", null);
 OauthController = __decorate([
+    (0, swagger_1.ApiTags)('oauth'),
     (0, common_1.Controller)('oauth')
 ], OauthController);
 exports.OauthController = OauthController;

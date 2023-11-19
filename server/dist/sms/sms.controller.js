@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const sms_service_1 = require("./sms.service");
 const success_interceptor_1 = require("../common/interceptor/success.interceptor");
 const http_exception_filter_1 = require("../common/exception/http-exception.filter");
+const swagger_1 = require("@nestjs/swagger");
 let SmsController = class SmsController {
     constructor(smsService) {
         this.smsService = smsService;
@@ -55,6 +56,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], SmsController.prototype, "showCache", null);
 SmsController = __decorate([
+    (0, swagger_1.ApiTags)('sms'),
     (0, common_1.Controller)('sms'),
     (0, common_1.UseInterceptors)(success_interceptor_1.SuccessInterceptor),
     (0, common_1.UseFilters)(http_exception_filter_1.HttpExceptionFilter),
