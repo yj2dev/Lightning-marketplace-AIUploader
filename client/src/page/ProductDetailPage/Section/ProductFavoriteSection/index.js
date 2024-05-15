@@ -45,6 +45,44 @@ const ProductFavoriteSection = ({ favoriteList, store, history }) => {
   }, [favoriteList]);
 
   const onClickFavoriteProduct = () => {
+    const now = new Date();
+    if (store && !store.isSignin) {
+      setShowSigninModal(true);
+      return;
+    }
+    if (favorite.mySelect === true) {
+      setShowAddFavoriteAlert(false);
+      setFavorite({
+        cnt: favorite.cnt - 1,
+        mySelect: false,
+      });
+    } else {
+      setFavorite({
+        cnt: favorite.cnt + 1,
+        mySelect: true,
+      });
+
+      setShowAddFavoriteAlert(true);
+      setTimeout(() => {
+        setShowAddFavoriteAlert(false);
+      }, 2000);
+    }
+
+    console.log("ms >> ", new Date() - now);
+
+    const productId = getProductId();
+
+    axios
+      .get(`/product/${productId}/favorite`)
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  /*
+  const onClickFavoriteProduct = () => {
+
     if (store && !store.isSignin) {
       setShowSigninModal(true);
       return;
@@ -78,7 +116,7 @@ const ProductFavoriteSection = ({ favoriteList, store, history }) => {
         console.log(err);
       });
   };
-
+*/
   const activeFavoriteBtn = {
     background: "#333333",
   };
