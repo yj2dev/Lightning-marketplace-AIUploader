@@ -1,3 +1,4 @@
+import Resizer from "react-image-file-resizer";
 import {
   Container,
   ImgUploadLabel,
@@ -153,7 +154,24 @@ const ProductNewPage = ({ history }) => {
     return parseInt(value.replaceAll(",", ""));
   };
 
-  const onSubmitNewProduct = () => {
+  const resizeFile = async (file) => {
+    return new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        file,
+        280,
+        280,
+        "JPEG",
+        80,
+        0,
+        (uri) => {
+          resolve(uri);
+        },
+        "file"
+      );
+    });
+  };
+
+  const onSubmitNewProduct = async () => {
     // 수량란에 잘못된 값이 들어있으면 변환
     onValidateQuantity();
 
@@ -167,7 +185,11 @@ const ProductNewPage = ({ history }) => {
 
     // 이미지 폼에 등록
     for (let i = 0; i < productImage.length; i++) {
-      formData.append("image", productImage[i]);
+      // 등록 전 리사이즈
+
+      const resizedImage = await resizeFile(productImage[i]);
+      formData.append("image", resizedImage);
+      // formData.append("image", productImage[i]);
     }
 
     // 전송할 데이터
@@ -303,6 +325,20 @@ const ProductNewPage = ({ history }) => {
       small: value,
     });
   };
+
+  // const dataURLtoFile = (dataurl, fileName) => {
+  //   var arr = dataurl.split(","),
+  //     mime = arr[0].match(/:(.*?);/)[1],
+  //     bstr = atob(arr[1]),
+  //     n = bstr.length,
+  //     u8arr = new Uint8Array(n);
+  //
+  //   while (n--) {
+  //     u8arr[n] = bstr.charCodeAt(n);
+  //   }
+  //
+  //   return new File([u8arr], fileName, { type: mime });
+  // };
 
   const onChangeImage = (e) => {
     console.log(e.target.files);
