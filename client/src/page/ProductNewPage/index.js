@@ -171,6 +171,18 @@ const ProductNewPage = ({ history }) => {
     });
   };
 
+  const fileToBlob = async (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const blob = new Blob([reader.result], { type: file.type });
+        resolve(blob);
+      };
+      reader.onerror = (error) => reject(error);
+      reader.readAsArrayBuffer(file);
+    });
+  };
+
   const onSubmitNewProduct = async () => {
     // 수량란에 잘못된 값이 들어있으면 변환
     onValidateQuantity();
@@ -189,6 +201,10 @@ const ProductNewPage = ({ history }) => {
 
       const resizedImage = await resizeFile(productImage[i]);
       formData.append("image", resizedImage);
+
+      const imageBlob = await fileToBlob(resizedImage);
+      formData.append("image", imageBlob);
+
       // formData.append("image", productImage[i]);
     }
 

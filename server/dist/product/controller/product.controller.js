@@ -68,6 +68,26 @@ let ProductController = class ProductController {
         console.log('productId >> ', productId);
         return await this.productService.getOneProduct(productId);
     }
+    async uploadBlob(file) {
+        const blobBuffer = Buffer.from(file.buffer);
+        const params = {
+            Bucket: process.env.AWS_S3_BUCKET_NAME,
+            Key: `product/${Date.now().toString()}-${file.originalname}`,
+            Body: blobBuffer,
+            ContentType: file.mimetype,
+            ACL: 'public-read',
+        };
+        try {
+            const uploadResult = await s3.upload(params).promise();
+            return {
+                message: 'Blob 업로드 성공',
+                url: uploadResult.Location,
+            };
+        }
+        catch (error) {
+            return { message: 'Blob 업로드 실패', error };
+        }
+    }
     async uploadProduct(currentUser, files, productInfo) {
         console.log('files >> ', files);
         return await this.productService.uploadProduct(currentUser, files, JSON.parse(productInfo.data));
@@ -158,6 +178,15 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ProductController.prototype, "getOneProduct", null);
+__decorate([
+    (0, common_1.Post)('upload-blob'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image')),
+    __param(0, (0, common_1.UploadedFile)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], ProductController.prototype, "uploadBlob", null);
 __decorate([
     (0, common_1.Post)('upload'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),

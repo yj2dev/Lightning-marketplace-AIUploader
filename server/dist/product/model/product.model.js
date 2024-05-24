@@ -47,16 +47,9 @@ __decorate([
     __metadata("design:type", mongoose_1.Types.ObjectId)
 ], Product.prototype, "userId", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'https://localhost:8000/static/product_image/product4431232.png',
-        description: '상품 썸네일(대표) 이미지 경로',
-        required: true,
-    }),
-    (0, mongoose_2.Prop)({}),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], Product.prototype, "thumbnailImgURL", void 0);
+    (0, mongoose_2.Prop)({ type: Buffer, required: true }),
+    __metadata("design:type", Buffer)
+], Product.prototype, "imageBuffer", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
         example: 'https://localhost:8000/static/product_image/product2319408132.png',

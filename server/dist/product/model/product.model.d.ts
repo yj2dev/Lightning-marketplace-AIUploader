@@ -1,8 +1,9 @@
+/// <reference types="node" />
 import { Document, Types } from 'mongoose';
 export declare class Product extends Document {
     state: string;
     userId: Types.ObjectId;
-    thumbnailImgURL: string;
+    imageBuffer: Buffer;
     productImgURL: Types.ObjectId;
     title: string;
     newProduct: boolean;
