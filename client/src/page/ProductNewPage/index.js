@@ -465,6 +465,67 @@ const ProductNewPage = ({ history }) => {
     setAddress(fullAddress);
   };
 
+  const onDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    handleImageUpload(files);
+  };
+
+  const handleImageUpload = (files) => {
+    const filesArray = Array.from(files);
+    if (productImage.length + filesArray.length > MAX_IMAGE) {
+      alert("사진 첨부는 최대 12장까지 가능합니다.");
+      return;
+    }
+
+    const newProductImageURLs = [];
+    const newProductImages = [];
+
+    filesArray.forEach((file) => {
+      const imageURL = URL.createObjectURL(file);
+      newProductImageURLs.push(imageURL);
+      newProductImages.push(file);
+    });
+
+    setProductImageURL([...productImageURL, ...newProductImageURLs]);
+    setProductImage([...productImage, ...newProductImages]);
+  };
+
+  const onDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const onDragEnter = (e) => {
+    e.preventDefault();
+  };
+
+  const onDragLeave = (e) => {
+    e.preventDefault();
+  };
+
+  const onDragStart = (e, index) => {
+    e.dataTransfer.setData("index", index);
+  };
+
+  const onDropIndex = (e, targetIndex) => {
+    e.preventDefault();
+    const draggedIndex = e.dataTransfer.getData("index");
+
+    const newProductImageURLs = [...productImageURL];
+    const newProductImages = [...productImage];
+
+    const tempURL = newProductImageURLs[targetIndex];
+    newProductImageURLs[targetIndex] = newProductImageURLs[draggedIndex];
+    newProductImageURLs[draggedIndex] = tempURL;
+
+    const tempImage = newProductImages[targetIndex];
+    newProductImages[targetIndex] = newProductImages[draggedIndex];
+    newProductImages[draggedIndex] = tempImage;
+
+    setProductImageURL(newProductImageURLs);
+    setProductImage(newProductImages);
+  };
+
   return (
     <Container>
       <ul>
@@ -498,6 +559,10 @@ const ProductNewPage = ({ history }) => {
           </td>
           <td>
             <ImgUploadLabel
+              onDrop={onDrop}
+              onDragOver={onDragOver}
+              onDragEnter={onDragEnter}
+              onDragLeave={onDragLeave}
               className={`cursor_pointer img_upload_label ${
                 productImageError.minLength && "error"
               }`}
@@ -523,7 +588,14 @@ const ProductNewPage = ({ history }) => {
             <ProductImgSection ref={imageList}>
               {productImageURL &&
                 productImageURL.map((imageURL, i) => (
-                  <div key={i} className="img_wrapper">
+                  <div
+                    key={i}
+                    className="img_wrapper"
+                    draggable // 드래그 가능하도록 설정
+                    onDragStart={(e) => onDragStart(e, i)} // 드래그 시작 시 이벤트 핸들러
+                    onDragOver={onDragOver}
+                    onDrop={(e) => onDropIndex(e, i)} // 드롭 시 이벤트 핸들러
+                  >
                     <span className={!i && "title_image"}></span>
                     <button
                       className="product_image_index cursor_pointer"
